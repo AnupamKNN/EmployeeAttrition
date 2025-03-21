@@ -7,5 +7,7 @@ scikit-learn
 statsmodels
 pymongo
 xgboost
+pymongo
+certifi
 
-# -e
+# -e .
