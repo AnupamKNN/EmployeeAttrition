@@ -1,0 +1,19 @@
+cloumns:
+  - jobType: str
+  - degree: str
+  - major: str
+  - industry: str
+  - yearsExperience: int64
+  - milesFromMetropolis: int64
+  - salary: int64
+
+numerical_columns:
+  - yearsExperience: int64
+  - milesFromMetropolis: int64
+  - salary: int64
+
+categorical_columns:
+  - jobType: str
+  - degree: str
+  - major: str
+  - industry: str

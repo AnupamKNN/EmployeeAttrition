@@ -9,5 +9,7 @@ pymongo
 xgboost
 pymongo
 certifi
+dill
+pyaml
 
 # -e .
