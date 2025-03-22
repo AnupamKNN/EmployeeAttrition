@@ -10,7 +10,6 @@ cloumns:
 numerical_columns:
   - yearsExperience: int64
   - milesFromMetropolis: int64
-  - salary: int64
 
 categorical_columns:
   - jobType: str
