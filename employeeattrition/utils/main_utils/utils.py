@@ -1,6 +1,8 @@
 import yaml
 from employeeattrition.exception.exception import EmployeeAttritionException
 from employeeattrition.logging.logger import logging
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import r2_score
 import os, sys
 import numpy as np
 import dill
@@ -48,3 +50,58 @@ def save_object(file_path: str, obj: object)-> None:
         logging.info("Exited the save_object method of MainUtils class")
     except Exception as e:
         raise EmployeeAttritionException(e, sys) from e
+
+
+def load_object(file_path: str)-> object:
+    try:
+        if not os.path.exists(file_path):
+            raise Exception(f"The file: {file_path} does not exists")
+        with open(file_path, "rb") as file_obj:
+            print(file_obj)
+            return pickle.load(file_obj)
+    except Exception as e:
+        raise EmployeeAttritionException(e, sys)
+    
+def load_numpy_array_data(file_path: str)-> np.array:
+    """
+    load numpy array data from file
+    file_path: str location of file to load
+    return: np.array data loaded
+    """
+    try:
+        with open(file_path, "rb") as file_obj:
+            return np.load(file_obj)
+    except Exception as e:
+        raise EmployeeAttritionException(e, sys)
+    
+
+def evaluate_models(X_train, y_train, X_test, y_test, models, param)-> dict:
+    try:
+        report = {}
+
+        for i in range(len(list(models))):
+            model = list(models.values())[i]
+            para=param[list(models.keys())[i]]
+
+            gs = GridSearchCV(model, para, cv=3)
+            gs.fit(X_train, y_train)
+
+            model.set_params(**gs.best_params_)
+            model.fit(X_train, y_train)
+
+            # model.fit(X_train, y_train) # Training the model
+
+            y_train_pred = gs.predict(X_train)
+
+            y_test_pred = gs.predict(X_test)
+
+            train_model_score = r2_score(y_train, y_train_pred)
+
+            test_model_score = r2_score(y_test, y_test_pred)
+
+            report[list(models.keys())[i]] = test_model_score
+
+        return report
+
+    except Exception as e:
+        raise EmployeeAttritionException(e, sys)

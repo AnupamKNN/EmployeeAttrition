@@ -1,9 +1,10 @@
 from employeeattrition.components.data_ingestion import DataIngestion
 from employeeattrition.components.data_validation import DataValidation
+from employeeattrition.components.model_trainer import ModelTrainer
 from employeeattrition.components.data_transformation import DataTransformation
 from employeeattrition.exception.exception import EmployeeAttritionException
 from employeeattrition.logging.logger import logging
-from employeeattrition.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig
+from employeeattrition.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig
 from employeeattrition.entity.config_entity import TrainingPipelineConfig
 
 import sys
@@ -28,6 +29,13 @@ if __name__ == "__main__":
         data_transformation_artifact = data_transformation.initiate_data_transformation()
         logging.info("Data transformation completed")
         print(data_transformation_artifact)
+
+        logging.info("Model Training started")
+        model_trainer_config = ModelTrainerConfig(training_pipeline_config= trainingpipelineconfig)
+        model_trainer = ModelTrainer(model_trainer_config= model_trainer_config,
+                                     data_transformation_artifact= data_transformation_artifact)
+        model_trainer_artifact = model_trainer.initate_model_trainer()
+        logging.info("Model Training artifact created")
 
 
         
