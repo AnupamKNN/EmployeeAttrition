@@ -26,6 +26,10 @@ from sklearn.model_selection import GridSearchCV
 import mlflow
 
 
+import dagshub
+dagshub.init(repo_owner='AnupamKNN', repo_name='EmployeeAttrition', mlflow=True)
+
+
 
 class ModelTrainer:
     def __init__(self, model_trainer_config: ModelTrainerConfig, data_transformation_artifact: DataTransformationArtifact):
@@ -57,7 +61,7 @@ class ModelTrainer:
             "RandomForest" : RandomForestRegressor(verbose=1, n_jobs = -1),
             "AdaBoost" : AdaBoostRegressor(),
             "GradientBoosting" : GradientBoostingRegressor(verbose=1),
-            "XGBoost" : XGBRegressor(n_jobs=-1),
+            "XGBoost" : XGBRegressor(n_jobs=-1,  tree_method='gpu_hist', predictor='gpu_predictor'),
             "SVR" : SVR(),
             "DecisionTree" : DecisionTreeRegressor()
             }
@@ -68,7 +72,7 @@ class ModelTrainer:
                     },
                     "KNeighbors": {
                         "n_neighbors": [3, 5, 7, 10],
-                        "weights": ["uniform", "distance"],
+                        # "weights": ["uniform", "distance"],
                         # "metric": ["euclidean", "manhattan"]
                     },
                     "RandomForest": {
@@ -88,7 +92,7 @@ class ModelTrainer:
                     },
                     "XGBoost": {
                         "n_estimators": [100, 200, 500],
-                        # "learning_rate": [0.01, 0.1, 0.2],
+                        "learning_rate": [0.01, 0.1, 0.2],
                         # "max_depth": [3, 5, 7, 10],
                         # "subsample": [0.7, 0.8, 1.0],
                         # "colsample_bytree": [0.7, 0.8, 1.0]
@@ -138,6 +142,8 @@ class ModelTrainer:
             Employe_Model = EmployeeModel(preprocessor=preprocessor, model=best_model)
             save_object(self.model_train_config.trained_model_file_path, obj=EmployeeModel)
 
+            save_object("final_model/model.pkl", best_model)
+
             ## Model Trainer Artifact
             model_trainer_artifact = ModelTrainerArtifact(trained_model_file_path=self.model_train_config.trained_model_file_path,
                                  train_metric_artifact = regression_train_metric,
@@ -164,10 +170,10 @@ class ModelTrainer:
             test_arr = load_numpy_array_data(test_file_path)
 
             x_train, y_train, x_test, y_test = (
-                train_arr[:10000, :-1],
-                train_arr[:10000, -1],
-                test_arr[:10000, :-1],
-                test_arr[:10000, -1]
+                train_arr[:, :-1],
+                train_arr[:, -1],
+                test_arr[:, :-1],
+                test_arr[:, -1]
             )
 
             model = self.train_model(x_train, y_train, x_test, y_test)

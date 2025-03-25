@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Project - AI Robotics</title>
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* AI-Themed Background */
+        body {
+            background: url('https://images.unsplash.com/photo-1573164713988-8665fc963095') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        /* Dark Overlay for Readability */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Content Box */
+        .container {
+            position: relative;
+            max-width: 700px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #00c3ff;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin: 10px 0 15px;
+            font-weight: 300;
+        }
+
+        /* Animated Icons */
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            animation: float 1.5s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-5px); }
+        }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #00c3ff;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s ease-in-out;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #0099cc;
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>About the Salary Prediction Project</h1>
+        
+        <h2>🏢 Company Overview</h2>
+        <p>Ai Robotics is a technology-driven company specializing in enterprise agile planning, DevOps, AI analytics, and digital security. With a strong focus on innovation, the company also manages critical business operations such as sourcing, procurement, and supply chain management. By integrating advanced technologies into its workflow, Ai Robotics aims to optimize business efficiency and enhance decision-making processes.</p>
+
+        <h2>📉 Problem Statement</h2>
+        <p>Mr. Francis, the manager of Ai Robotics, identified a concerning issue within the organization—a high employee turnover rate. Recognizing the potential risks associated with frequent workforce changes, such as decreased productivity and increased hiring costs, he sought a proactive solution. To address this challenge, Mr. Francis enlisted the expertise of Mr. Andrew, a data scientist, to analyze salary trends and uncover patterns that might influence employee retention.</p>
+
+        <h2>💡 Business Solution</h2>
+        <p>To tackle the problem effectively, the company decided to leverage machine learning for predictive analytics. By developing a model capable of forecasting employee salaries, Ai Robotics aims to make data-driven compensation decisions. This approach not only ensures competitive salary structures but also helps improve employee retention rates. By aligning compensation strategies with industry standards and employee expectations, Ai Robotics strives to foster a more stable and satisfied workforce.</p>
+
+        <a href="/" class="btn">Back to Home</a>
+    </div>
+
+</body>
+</html>

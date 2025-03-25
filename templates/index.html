@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai Robotics - Salary Prediction</title>
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* AI-Themed Background */
+        body {
+            background: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        /* Dark Overlay for Readability */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Adjusted opacity */
+        }
+
+        /* Content Box */
+        .container {
+            position: relative;
+            max-width: 600px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin: 10px 0 20px;
+            font-weight: 300;
+        }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #00c3ff;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s ease-in-out;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: #0099cc;
+            transform: scale(1.05);
+        }
+
+        /* Button Container */
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn-group a {
+            width: 80%;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 15px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to Ai Robotics Salary Prediction</h1>
+        <p>Our cutting-edge AI model unlocks salary predictions with precision, giving you clear insights into salary trends!</p>
+        
+        <div class="btn-group">
+            <a href="/predict" class="btn">Go to Single Prediction</a>
+            <a href="/batch_predict" class="btn">Go to Batch Prediction</a>
+            <a href="/about" class="btn">About Project</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Ai Robotics. All rights reserved.</p>
+    </div>
+
+</body>
+</html>

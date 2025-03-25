@@ -2,7 +2,7 @@ import sys
 import os
 import numpy as np
 import pandas as pd
-from sklearn.impute import KNNImputer
+from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
@@ -41,7 +41,7 @@ class DataTransformation:
     def get_data_transformer_object(self) -> Pipeline:
         """
         Returns:
-            A Pipeline object that applies KNN Imputation, Standard Scaling, 
+            A Pipeline object that applies Simple Imputation, Standard Scaling, 
             and One-Hot Encoding (with first column dropped).
         """
         logging.info("Entered get_data_transformer_object method of Transformation class")
@@ -54,18 +54,17 @@ class DataTransformation:
             num_features = [list(d.keys())[0] for d in self.schema_config["numerical_columns"]]
             cat_features = [list(d.keys())[0] for d in self.schema_config["categorical_columns"]]
 
-            # logging.info(f"Numerical Columns: {num_features}")
-            # logging.info(f"Categorical Columns: {cat_features}")
-
-            # Define numerical transformer pipeline
+            # Define numerical transformer pipeline with SimpleImputer
             numeric_transformer = Pipeline(steps=[
-                ("imputer", KNNImputer(**DATA_TRANSFORMATION_IMPUTER_PARAMS)),
+                ("imputer", SimpleImputer(strategy="median")),  # Handle NaNs
                 ("scaler", StandardScaler())
             ])
-            logging.info(f"Initialized KNNImputer and StandardScaler with parameters: {DATA_TRANSFORMATION_IMPUTER_PARAMS}")
 
-            # Define categorical transformer
-            categorical_transformer = OneHotEncoder(drop="first", handle_unknown="ignore")
+            # Define categorical transformer pipeline with SimpleImputer & OneHotEncoder
+            categorical_transformer = Pipeline(steps=[
+                ("imputer", SimpleImputer(strategy="most_frequent")),  # Handle NaNs in categorical columns
+                ("encoder", OneHotEncoder(drop="first", handle_unknown="ignore"))
+            ])
 
             # Combine transformers into a ColumnTransformer
             preprocessor = ColumnTransformer(transformers=[
@@ -83,6 +82,7 @@ class DataTransformation:
         except Exception as e:
             logging.error("Error in get_data_transformer_object method")
             raise EmployeeAttritionException(e, sys)
+
 
     def initiate_data_transformation(self) -> DataTransformationArtifact:
         logging.info("Entered initiate_data_transformation method of DataTransformation class")
@@ -132,6 +132,8 @@ class DataTransformation:
 
             # Save the preprocessing object
             save_object(self.data_transformation_config.transformed_object_file_path, preprocessor_object)
+
+            save_object("final_model/preprocessor.pkl", preprocessor_object)
 
             # Prepare and return artifacts
             data_transformation_artifact = DataTransformationArtifact(
