@@ -100,16 +100,16 @@ This makes it easy for anyone cloning your repo to set up their environment corr
 
 The dataset consists of employee-related features such as:
 
-- jobId: Unique ID representing each employee.
-- companyId: Unique ID representing the company.
-- jobType: The position or role of the employee in the company.
-- degree: The degree obtained by the employee.
-- major: The field of specialization of the employee.
-- industry: The industry in which the employee is working.
-- yearsExperience: Total number of years of experience of the employee.
-- milesFromMetropolis: The distance (in miles) between the employee’s residence and the company.
+- **jobId**: Unique ID representing each employee.
+- **companyId**: Unique ID representing the company.
+- **jobType**: The position or role of the employee in the company.
+- **degree**: The degree obtained by the employee.
+- **major**: The field of specialization of the employee.
+- **industry**: The industry in which the employee is working.
+- **yearsExperience**: Total number of years of experience of the employee.
+- **milesFromMetropolis**: The distance (in miles) between the employee’s residence and the company.
 
-📌 Target Variable: Predicted Salary: Employee's salary in $100k units (e.g., 250 represents $250,000).
+📌 **Target Variable**: Predicted Salary: Employee's salary in $100k units (e.g., 250 represents $250,000).
 
 
 ## 🎯 Model Training & Evaluation
