@@ -16,3 +16,5 @@ categorical_columns:
   - degree: str
   - major: str
   - industry: str
+
+target_column: salary

@@ -65,6 +65,13 @@ class DataValidation:
             write_yaml_file(file_path = drift_report_file_path, content = report)
         except Exception as e:
             raise EmployeeAttritionException(e, sys)
+    
+    def is_numeric_column(self, dataframe: pd.DataFrame, column_name: str)->bool:
+        try:
+            return dataframe[column_name].dtypes in ["int64", "float64"]
+        except Exception as e:
+            raise EmployeeAttritionException(e, sys)
+
 
     def initiate_data_validation(self)->DataValidationArtifact:
         try:
@@ -83,6 +90,25 @@ class DataValidation:
             status = self.validate_number_of_columns(dataframe = test_dataframe)
             if not status:
                 error_message = f"Test dataframe does not contain all columns.\n"
+
+            # Check if train and test dataset has numeric columns
+            error_message = []
+            if not self.is_numeric_column(dataframe= train_dataframe, column_name= train_dataframe.columns[0]):
+                error_message.append (f"Train dataframe does not have numeric columns.\n")
+
+            if not self.is_numeric_column(dataframe= test_dataframe, column_name= test_dataframe.columns[0]):
+                error_message.append(f"Test dataframe does not have numeric columns.\n")
+
+            if len(error_message) > 0:
+                raise Exception("\n".join(error_message))
+            else:
+                logging.info("Numerical columns existance validation completed successfully. No errors found.")
+            
+
+            if len(error_message) > 0:
+                raise Exception("\n".join(error_message))
+            else:
+                logging.info("Categorical columns existance validation completed successfully. No errors found.")
 
             # Let's check datadrift
             status = self.detect_dataset_drift(base_df = train_dataframe, current_df = test_dataframe)
