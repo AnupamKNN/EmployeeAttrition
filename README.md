@@ -12,6 +12,7 @@ Apart from its core technological focus, Ai Robotics also plays a crucial role i
 
 Recognizing that technology is only as effective as the people behind it, Ai Robotics continuously invests in talent retention and workforce stability. This commitment to employee satisfaction forms the foundation of the present initiative, which predicts employee salaries through machine learning to improve retention and hiring strategies.
 
+---
 
 ## 📉 Problem Statement
 Employee retention is one of the biggest challenges organizations face today. High employee turnover leads to significant operational inefficiencies, including:
@@ -27,6 +28,7 @@ Despite offering performance-based raises, the company lacked data-driven insigh
 
 To address this, Mr. Francis sought the expertise of Mr. Andrew, a data scientist, to develop a machine learning model capable of predicting employee salaries based on market trends, skills, and experience.
 
+---
 
 ## 💡 Business Solution
 To combat employee attrition and ensure competitive compensation, Ai Robotics decided to integrate predictive analytics into its HR decision-making process.
@@ -55,6 +57,8 @@ By leveraging machine learning, Ai Robotics aims to:
 
 This data-driven strategy aligns employee expectations with industry standards, strengthening the company’s position in a competitive talent market.
 
+---
+
 ## ⚙️ Tech Stack
 
 |                  Category                  |             Tools & Libraries            |
@@ -66,9 +70,10 @@ This data-driven strategy aligns employee expectations with industry standards, 
 | Deployment                                 | Flask, Render.com                        |
 | Database                                   | MongoDB,                                 |
 | CI/CD Pipelines                            | GitHub Actions                           |
-| Docker Image Creation                      | Docker, GitHub Container Registry (GHCR) |
+| Containarization                           | Docker, GitHub Container Registry (GHCR) |
 | MLOps Performance Metrics Tracking         | MLFlow, Dagshub                          |
 
+---
 
 ## 🛠 Installation & Setup
 
@@ -95,6 +100,7 @@ If you are using Conda Environment (Anaconda Navigator)
 
 This makes it easy for anyone cloning your repo to set up their environment correctly! ✅
 
+--- 
 
 ## 📊 Dataset Overview
 
@@ -111,16 +117,17 @@ The dataset consists of employee-related features such as:
 
 📌 **Target Variable**: Predicted Salary: Employee's salary in $100k units (e.g., 250 represents $250,000).
 
+---
 
 ## 🎯 Model Training & Evaluation
-The models are trained using supervised learning algorithms from Scikit-Learn
+The models are trained using classification-based supervised learning algorithms from Scikit-Learn
 
 ### 📊 Model Performance Summary
 
-Before Hyperparameter Tuning
+#### Before Hyperparameter Tuning
 
 
-### 📊 Train Results
+#### 📊 Train Results
 
 | Rank | Model              | MAE      | MSE      | RMSE     | R² Score (%) |
 |------|-------------------|---------|---------|---------|-------------|
@@ -134,7 +141,7 @@ Before Hyperparameter Tuning
 | 8️⃣  | DecisionTree      | 22.1796 | 822.3357 | 28.6764 | 45.1036%    |
 
 
-### 📊 Test Results
+#### 📊 Test Results
 
 | Rank | Model              | MAE      | MSE      | RMSE     | R² Score (%) |
 |------|-------------------|---------|---------|---------|-------------|
@@ -147,11 +154,12 @@ Before Hyperparameter Tuning
 | 7️⃣  | AdaBoost          | 20.8744 | 633.9303 | 25.1780 | 57.8355%    |
 | 8️⃣  | DecisionTree      | 22.3757 | 825.7567 | 28.7360 | 45.0766%    |
 
+---
 
-After Hyperparameter Tuning
+### After Hyperparameter Tuning
 
 
-### 📊 Train Results
+#### 📊 Train Results
 
 | Rank | Model               | MAE      | MSE      | RMSE     | R² Score (%) |
 |------|--------------------|---------|---------|---------|-------------|
@@ -181,12 +189,14 @@ After Hyperparameter Tuning
 
 After hyperparameter tuning, **XGBRegressor** emerged as the best-performing model, achieving the highest R² score of **75.4508%** and superior predictive accuracy.
 
+---
 
 ## 🚀 Usage
 1️⃣ Input Employee Data (jobType, degree, major, etc.).
 2️⃣ ML Model Predicts Salary based on historical trends.
 3️⃣ Company Optimizes Compensation to improve retention and reduce hiring costs.
 
+---
 
 ## 🔥 Results & Insights
 📌 The AI model provides accurate salary predictions, enabling Ai Robotics to:
@@ -194,5 +204,18 @@ After hyperparameter tuning, **XGBRegressor** emerged as the best-performing mod
 ✅ Reduce voluntary employee exits through better compensation.
 ✅ Optimize HR decision-making using data-driven insights.
 
+---
+
+## ✅ Final Deliverables
+
+- 📁 Cleaned dataset & EDA and Model Training notebooks  
+- 📦 Trained model saved in `.pkl`
+- 🛠 Complete Deployable Project:
+  - Data Ingestion, Data Validation, Data Transformation
+  - Model Training Pipeline with Model Performance Metrics Tracking using MLflow
+- 🚀 Flask app for model inference
+- 🖥 Frontend interface for real-time predictions 
+
+---
 
 🌟 Star this repo if you found it helpful! 🚀
