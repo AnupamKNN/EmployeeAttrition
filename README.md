@@ -79,23 +79,82 @@ This data-driven strategy aligns employee expectations with industry standards, 
 
 ---
 
-## 🛠 Installation & Setup
+Let's get your `README.md` updated for the Employee Attrition project, incorporating the Docker setup as the primary option.
 
-1️⃣ Clone the Repository
-- git clone https://github.com/AnupamKNN/EmployeeAttrition.git
-- cd EmployeeAttrition
+---
 
-2️⃣ Create a Virtual Environment & Install Dependencies
-- python3.10 -m venv venv
-- source venv/bin/activate  # (Linux/macOS)
-- venv\Scripts\activate  # (Windows)
-- pip install -r requirements.txt
+## 🚀 Getting Started
 
-If you are using Conda Environment (Anaconda Navigator)
-- conda create --name venv python=3.10 -y
-- conda activate venv/
-- pip install -r requirements.txt
+You have two convenient options to run this Employee Attrition prediction application: the recommended **Docker method** for quick and easy deployment, or a **manual local installation** if you're looking to develop or contribute to the project.
 
+---
+
+### 🐳 Option 1: Run with Docker (Recommended)
+
+Using Docker is the most straightforward way to get the application running. It handles all the environment setup and dependencies, ensuring a consistent experience across different machines.
+
+**Prerequisites:**
+
+* Make sure you have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed on your system.
+
+**Steps:**
+
+1.  **Pull the Docker Image:**
+    We've pre-built the Docker image and made it available on GitHub Container Registry (GHCR). Simply pull it:
+    ```bash
+    docker pull ghcr.io/AnupamKNN/EmployeeAttrition:latest
+    ```
+    *(**Note:** If your repository is private, you might need to authenticate with GHCR first using `docker login ghcr.io`.)*
+
+2.  **Run the Docker Container:**
+    Once the image is pulled, you can run the application. This command maps port `8000` from the container to your local machine (adjust this if your application uses a different port).
+    ```bash
+    docker run -p 8000:8000 ghcr.io/AnupamKNN/EmployeeAttrition:latest
+    ```
+
+3.  **Access the Application:**
+    Your Employee Attrition application should now be accessible in your web browser or via an API client at `http://localhost:8000`.
+
+---
+
+### 🛠 Option 2: Manual Local Setup (For Development)
+
+If you prefer to set up the project locally for development, to make contributions, or to directly inspect the code, follow these steps:
+
+**Prerequisites:**
+
+* **Python 3.10** or higher installed.
+
+1.  **Clone the Repository:**
+    Start by getting the project files onto your local machine:
+    ```bash
+    git clone https://github.com/AnupamKNN/EmployeeAttrition.git
+    cd EmployeeAttrition
+    ```
+
+2.  **Create a Virtual Environment and Install Dependencies:**
+
+    **Using `venv` (recommended for Python projects):**
+    ```bash
+    python3.10 -m venv venv
+    source venv/bin/activate   # For Linux/macOS
+    # OR
+    .\venv\Scripts\activate    # For Windows
+    pip install -r requirements.txt
+    ```
+
+    **Alternatively, using Conda:**
+    ```bash
+    conda create --name employee-attrition-env python=3.10 -y
+    conda activate employee-attrition-env
+    pip install -r requirements.txt
+    ```
+    *(**Explanation:** This sequence first creates a Conda virtual environment named `employee-attrition-env` with Python 3.10, then activates it, and finally installs all necessary dependencies listed in `requirements.txt`.)*
+
+3.  **Run the Application:**
+    *(**Important:** Add the specific command(s) here to start your Python application locally. For instance, if it's a Flask or FastAPI app, it might be `python app.py`, `uvicorn main:app --host 0.0.0.0 --port 8000`, or `flask run`.)*
+
+---
 
 ### Explanation:
 1. Creates a Conda virtual environment** named `venv` with Python 3.10.
